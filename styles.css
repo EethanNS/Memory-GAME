@@ -42,7 +42,7 @@ button {
     font-size: 2em;
     cursor: pointer;
     position: relative;
-    transition: transform 0.5s;
+    transition: transform 0.3s;
     transform-style: preserve-3d;
 }
 
@@ -50,11 +50,12 @@ button {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: none; /* Initially hide the image */
+    display: none; 
 }
 
 .card.flipped img {
-    display: block; /* Show the image when card is flipped */
+    display: block;
+     transition: transform 0.3s; 
 }
 
 .card .front,
@@ -75,6 +76,6 @@ button {
 }
 
 .card.matched {
-    background-color: #636868c8; /* Change color for matched pairs */
-    cursor: default; /* Disable cursor for matched pairs */
+    background-color: #636868c8; 
+    cursor: default; 
 }
