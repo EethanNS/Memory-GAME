@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const cardsArray = [
     {
@@ -33,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "zebra",
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpSgaSl-R-1BPQ1CAMJv3szlAL1rFOInW_LQ&s",
     },
-  
   ];
 
   const gameBoard = document.getElementById("game-board");
@@ -73,12 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function checkForMatch() {
     const isMatch = firstCard.dataset.name === secondCard.dataset.name;
-    isMatch ? disableCards() : unflipCards();
+    if (isMatch) {
+      markCardsAsMatched();
+    } else {
+      unflipCards();
+    }
   }
 
-  function disableCards() {
-    firstCard.removeEventListener("click", flipCard);
-    secondCard.removeEventListener("click", flipCard);
+  function markCardsAsMatched() {
+    firstCard.classList.add("matched");
+    secondCard.classList.add("matched");
+    firstCard.querySelector("img").style.display = "none";
+    secondCard.querySelector("img").style.display = "none";
     resetBoard();
   }
 
@@ -88,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       firstCard.classList.remove("flipped");
       secondCard.classList.remove("flipped");
       resetBoard();
-    }, 1000);
+    }, 3000); // Flipped for 3 seconds
   }
 
   function resetBoard() {
